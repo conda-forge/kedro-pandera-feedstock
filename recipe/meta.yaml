@@ -11,7 +11,7 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
@@ -22,7 +22,15 @@ requirements:
   run:
     - python >=3.8,<3.12
     - pandera >=0.15
-    - kedro >=0.18.13,<0.19
+    - kedro >=0.19.0,<0.20
+# kedro-pandera requirements uses pandera[io] ; io dependencies added. 
+    #   https://github.com/Galileo-Galilei/kedro-pandera/blob/main/requirements.txt#L1C1-L1C18
+    #   pandera[io]>=0.15
+    #   https://github.com/unionai-oss/pandera/blob/v0.15.0/setup.py#L13C13-L13C61
+    #   "io": ["pyyaml >= 5.1", "black", "frictionless <= 4.40.8"],
+    - pyyaml >= 5.1
+    - black
+    - frictionless <= 4.40.8    
 
 test:
   imports:
