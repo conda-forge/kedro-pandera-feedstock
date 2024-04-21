@@ -1,5 +1,5 @@
 {% set name = "kedro-pandera" %}
-{% set version = "0.1.0" %}
+{% set version = "0.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/kedro_pandera-{{ version }}.tar.gz
-  sha256: 632dbb80bb0edfd0356124a5215e827bad09fe27052839ed195da2e74560e28a
+  sha256: f8ea0768c2525a63b397c410151973a6bcfd6739cc2606fcff2430e40e32548b
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
@@ -22,7 +22,15 @@ requirements:
   run:
     - python >=3.8,<3.12
     - pandera >=0.15
-    - kedro >=0.18.13,<0.19
+    - kedro >=0.19.0,<0.20
+# kedro-pandera requirements uses pandera[io] ; io dependencies added. 
+    #   https://github.com/Galileo-Galilei/kedro-pandera/blob/main/requirements.txt#L1C1-L1C18
+    #   pandera[io]>=0.15
+    #   https://github.com/unionai-oss/pandera/blob/v0.15.0/setup.py#L13C13-L13C61
+    #   "io": ["pyyaml >= 5.1", "black", "frictionless <= 4.40.8"],
+    - pyyaml >=5.1
+    - black
+    - frictionless <=4.40.8    
 
 test:
   imports:
