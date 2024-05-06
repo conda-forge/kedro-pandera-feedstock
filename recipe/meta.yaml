@@ -1,5 +1,5 @@
 {% set name = "kedro-pandera" %}
-{% set version = "0.2.0" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/kedro_pandera-{{ version }}.tar.gz
-  sha256: f8ea0768c2525a63b397c410151973a6bcfd6739cc2606fcff2430e40e32548b
+  sha256: b744e65777fe92e170c70b72ddee3616f5b876a8995195d093241e8f21a79c22
 
 build:
   noarch: python
@@ -30,7 +30,7 @@ requirements:
     #   "io": ["pyyaml >= 5.1", "black", "frictionless <= 4.40.8"],
     - pyyaml >=5.1
     - black
-    - frictionless <=4.40.8    
+    - frictionless <=4.40.8
 
 test:
   imports:
