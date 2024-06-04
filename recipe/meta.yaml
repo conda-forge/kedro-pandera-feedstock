@@ -1,5 +1,5 @@
 {% set name = "kedro-pandera" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/kedro_pandera-{{ version }}.tar.gz
-  sha256: b744e65777fe92e170c70b72ddee3616f5b876a8995195d093241e8f21a79c22
+  sha256: e7505be50d8019d425c92167086ee791dcdb206cdf8cf2bda60194799a242e1c
 
 build:
   noarch: python
